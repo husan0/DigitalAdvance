@@ -1,0 +1,23 @@
+{% extends "base.html" %} 
+{% block content %}
+    <div class="container">
+        <div class="section">
+            <div class="row">
+                <form class="col s12" action="/eliminarProducto" method="POST">
+                    <div class="form-group">
+                        <div class="input-field col s6">
+                            <label>Nombre Producto:</label>
+                            <input type="text" class="form-control" name="nombre_producto" id="nombre_producto" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-field col s6">
+                            <button class="btn waves-effect waves-light" type="submit" name="action">Eliminar</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <br><br>
+    </div>
+{% endblock %}          

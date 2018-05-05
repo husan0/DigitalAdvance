@@ -1,0 +1,96 @@
+{% extends "base.html" %} 
+{% block content %}
+  <div class="container">
+    <div class="section">
+      <div class="row">
+        <div class="col-md-12 col-sm-12">
+          <table class="table table-bordered">
+                <tr>
+                    <th>
+                        ID
+                    </th>
+                    <th>
+                        Codigo de Barras
+                    </th>
+                    <th>
+                        Nombre Producto
+                    </th>
+                    <th>
+                        Stock
+                    </th>
+                    <th>
+                        Precio
+                    </th>
+                    <th>
+                        Tipo precio
+                    </th>
+                    <th>
+                        Categoria Producto
+                    </th>
+                    <th>
+                        tipo producto
+                    </th>
+                    <th>
+                        Detalle
+                    </th>
+                    <th>
+                        Imagen
+                    </th>
+                </tr>
+                {% for row in productos %}
+                <tr>
+                        <td>
+                            {{row[0]}}
+                        </td>
+                        <td>
+                            {{row[1]}}
+                        </td>
+                        <td>
+                            {{row[2]}}
+                        </td>
+                        <td>
+                            {% for sp in stock %} 
+                                {% if row[3] == sp[0] %}
+                                    {{ sp[2] }}
+                                {% endif %} 
+                            {% endfor %}
+                        </td>
+                        {% for det in detalle %} 
+                            {% if row[4]==det[0] %}
+                                <td> {{det[1]}}</td>
+                            {% endif %}
+                            {% for tp in tipoPrecio %} 
+                                {% if det[2]==tp[0] %}
+                                <td>{{tp[1]}}</td>
+                                {% endif %} 
+                            {% endfor %} 
+                        {% endfor %}
+                        <td>
+                            {% for cat in categoria %} 
+                                {% if row[5]==cat[0] %}
+                                    {{ cat[1] }}
+                                {% endif %} 
+                            {% endfor %}
+                        </td>
+                        <td>
+                            {% for tpo in tipoProducto %} 
+                                {% if row[6]==tpo[0] %}
+                                    {{tpo[1]}}
+                                {% endif %} 
+                            {% endfor %}
+                        </td>
+                        <td>
+                            {{row[7]}}
+                        </td>
+                        <td>
+                            <img src="static/Uploads/{{row[8]}}" alt="" height="100" width="100">
+                        </td>
+                    </tr>
+                {% endfor %}
+            </table>
+            </div>
+        </div>
+    </div>
+  </div>
+{% endblock %}
+ 

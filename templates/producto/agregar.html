@@ -1,0 +1,77 @@
+﻿{% extends "base.html" %} 
+{% block content %}
+        <form action="/agregar" method="post" enctype="multipart/form-data">
+            <div class="form-group row">
+                <label for="text-input" class="col-2 col-form-label">Codigo de barras</label>
+                <div class="col-10">
+                    <input class="form-control" type="number" name="codigoBarras" id="codigoBarras" placeholder="ingrese un codigo de baras" required>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="number-input" class="col-2 col-form-label">Nombre producto</label>
+                <div class="col-10">
+                    <input class="form-control" type="text" name="nombreProducto" id="nombreProducto" placeholder="ingrese un nombre de producto" required>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="number-input" class="col-2 col-form-label">Detalle producto</label>
+                <div class="col-10">
+                    <input class="form-control" type="text" name="detalle" id="detalle" placeholder="ingrese el detalle del producto" required>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="Select" class="col-2 col-form-label">Categoria</label>
+                <div class="col-10">
+                    <select class="form-control" id="categoria" name="categoria" required>
+                        <option value="" selected>Selecciona</option>
+                        {% for row in listaC %}
+                        <option value="{{row[0]}}">{{row[1]}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="Select" class="col-2 col-form-label">Tipo producto</label>
+                <div class="col-10">
+                    <select class="form-control" id="tipoProducto" name="tipoProducto" required>
+                        <option value="" selected>Selecciona</option>
+                        {% for row in lista %}
+                        <option value="{{row[0]}}">{{row[1]}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="InputFile" class="col-2 col-form-label">seleccione una foto</label>
+                <div class="col-10">
+                    <input type="file" class="form-control-file" id="file" name="file" aria-describedby="fileHelp" required>
+                    <small id="fileHelp" class="form-text text-muted">Los tipos de archivos soportados son JPG , PNG</small>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="number-input" class="col-2 col-form-label">Cantidad producto</label>
+                <div class="col-10">
+                    <input class="form-control" type="number" name="cantidad" id="cantidad" placeholder="ingrese la cantidad del producto" required>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="number-input" class="col-2 col-form-label">Precio producto</label>
+                <div class="col-10">
+                    <input class="form-control" type="number" name="price" id="price" placeholder="ingrese el precio" required>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="Select" class="col-2 col-form-label">Tipo precio</label>
+                <div class="col-10">
+                    <select class="form-control" id="tipoPrecio" name="tipoPrecio" required>
+                        <option value="" selected>Selecciona</option>
+                        {% for row in listaTP %}
+                        <option value="{{row[0]}}">{{row[1]}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Agregar</button>
+        </form>
+        
+{% endblock %}
